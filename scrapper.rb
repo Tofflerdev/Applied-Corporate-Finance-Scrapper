@@ -1,9 +1,20 @@
 require 'mechanize'
 require 'date'
 require 'json'
-
+require 'watir'
+x = 1
 agent = Mechanize.new
-page = agent.get("http://onlinelibrary.wiley.com/journal/10.1111/(ISSN)1745-6622/issues")
-issues_links = page.links_with(css: 'a.issuesInYear')
+page = agent.get("http://onlinelibrary.wiley.com/doi/10.1111/jacf.1988.1.issue-1/issuetoc")
+while next_link = page.link_with(css: 'a.next') do
+    puts x
+    x +=1
+    page = next_link.click
+end
 
-p issues_links
+#issues_links.each do |l|
+ #   l.click
+#end
+
+#volume_links = page.links_with(css: 'div.issue')
+
+#puts volume_links.inspect
