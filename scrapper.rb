@@ -17,6 +17,7 @@ else
     repeat = false
     end
 end
+x = 1
 
 doi_numbers.each do |doi|
 
@@ -25,8 +26,9 @@ doi_numbers.each do |doi|
   link = page.search("#save").search('a').attribute('onclick').value.gsub('location.href=\'','')
   link = link.gsub('?download=true\'','')
   agent.pluggable_parser.default = Mechanize::Download
-  agent.get(link).save(File.join('./pdfs/', "#{doi}.pdf"))
+  agent.get(link).save(File.join("./pdfs/", "#{x}.pdf"))
   puts "#{doi}.pdf saved"
+  x += 1
   sleep 600
 
 end
