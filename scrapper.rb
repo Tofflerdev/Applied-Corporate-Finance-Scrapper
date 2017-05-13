@@ -27,6 +27,6 @@ doi_numbers.each do |doi|
   agent.pluggable_parser.default = Mechanize::Download
   agent.get(link).save(File.join('./pdfs/', "#{doi}.pdf"))
   puts "#{doi}.pdf saved"
-  sleep 600
+  sleep 6000
 
 end
